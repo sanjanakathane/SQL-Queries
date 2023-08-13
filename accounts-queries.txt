@@ -1,3 +1,39 @@
+1] create structure of a table to store data (create)
+
+create table students
+(
+    regno int primary key,
+    studnm varchar(30),
+    qual varchar(25),
+    city varchar(20) default 'mumbai',
+    course varchar(30),
+    mobile varchar(10)
+);
+
+2] store data in the table (insert)
+
+insert into students values(101,'jos buttler','btech','manchester','full stack java','9890925745');
+insert into students values(102,'mohammed salah','mba','cairo','python for data science','9988766554');
+insert into students(regno,studnm,qual,course,mobile) values(103,'ben stokes','be','core java','9876512345');
+
+3] display the records (select)
+
+select * from students;
+
+4] Modify the existing data (update)
+
+update students set city='chennai' where regno=103; 
+
+5] remove unwanted data from the table (delete)
+
+delete from students where regno=101;
+
+6] remove the table from the database (drop)
+
+drop table students;
+
+
+
 create table accounts(accno int primary key,
 accnm varchar(30),acctype varchar(10) not null,balance float check(balance>=500));
 
@@ -57,4 +93,43 @@ insert into accounts values(1051,'irfan pathan','ppf',75000);
 
 
 select * from accounts;
+select * from accounts;
+select accnm from accounts;
+select accnm,balance from accounts;
+
+select * from accounts where acctype='saving';
+
+select * from accounts where acctype='current';
+
+select * from accounts where acctype='saving' and balance>=75000;
+
+select * from accounts where acctype='fixed' or balance<=50000;
+
+select * from accounts where not acctype='saving';
+
+select* from accounts where balance between 10000 and 35000;
+
+select * from accounts where accno in (1023,1029,1045,1033);
+
+select * from accounts where accnm like '%s';
+
+select * from accounts where accnm like '%kar';
+
+select * from accounts order by accnm;
+
+select * from accounts order by balance desc;
+select * from accounts order by acctype desc;
+select * from accounts;
+
+select count(ACCNM) from accounts;
+select sum(balance) from accounts;
+select avg(balance) from accounts;
+select max(balance) from accounts;
+select acctype,count(accnm),sum(balance) from accounts group by acctype;
+select accnm,max(balance) from accounts group by balance;
+select accnm from accounts where balance=(select max(balance) from accounts);
+select distinct acctype from accounts;
+update accounts set balance=balance+100 where acctype='saving';
+update accounts set balance=round(balance*3/100) where acctype='saving';
+select * from accounts where acctype='saving';
 
